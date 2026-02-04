@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Used Car Price Predictor</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  body {
+    background-image: linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+      ),
+      url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  .card {
+    border-radius: 16px;
+  }
+</style>
+
+</head>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8 col-xl-7">
+
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h1 class="h3 mb-0">Used Car Price Predictor</h1>
+            </div>
+            <p class="text-muted mb-4">
+              Unesi značajke vozila i dobij procijenjenu cijenu.
+            </p>
+
+            {% if error %}
+              <div class="alert alert-danger">
+                <strong>Greška:</strong> {{ error }}
+              </div>
+            {% endif %}
+
+            {% if predicted_price %}
+              <div class="alert alert-success">
+                <strong>Predicted price:</strong> ${{ predicted_price }}
+              </div>
+            {% endif %}
+
+            <form method="post" class="row g-3">
+              {% csrf_token %}
+
+              <div class="col-md-6">
+                <label class="form-label">Brand</label>
+                <input class="form-control" type="text" name="brand" placeholder="npr. Ford" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Model</label>
+                <input class="form-control" type="text" name="model" placeholder="npr. Focus" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Year</label>
+                <input class="form-control" type="number" name="model_year" placeholder="npr. 2018" min="1950" max="2030" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Mileage</label>
+                <input class="form-control" type="number" name="milage" placeholder="npr. 85000" min="0" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Fuel type</label>
+                <input class="form-control" type="text" name="fuel_type" placeholder="npr. Gasoline" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Transmission</label>
+                <input class="form-control" type="text" name="transmission" placeholder="npr. Automatic" required>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Engine</label>
+                <input class="form-control" type="text" name="engine" placeholder="npr. 2.0L I4" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Exterior color</label>
+                <input class="form-control" type="text" name="ext_col" placeholder="npr. Black" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Interior color</label>
+                <input class="form-control" type="text" name="int_col" placeholder="npr. Gray" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Accident</label>
+                <input class="form-control" type="text" name="accident" placeholder="npr. No accidents" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Clean title</label>
+                <input class="form-control" type="text" name="clean_title" placeholder="Yes / No" required>
+              </div>
+
+              <div class="col-12 d-grid mt-2">
+                <button class="btn btn-primary btn-lg" type="submit">Predict</button>
+              </div>
+            </form>
+
+            <hr class="my-4">
+
+            <div class="small text-muted">
+              Tip: možeš kopirati vrijednosti iz dataset-a da dobiješ realističniju predikciju.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environments
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# Editors / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Secrets
+config.json
+*.env
+
+# Big artifacts
+*.pkl
+*.joblib
+*.csv
