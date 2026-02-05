@@ -46,10 +46,11 @@ Dataset sadrži informacije o:
 
 ## ⚙ Obrada podataka
 
-- uklanjanje nedostajućih vrijednosti  
-- encoding kategoričkih varijabli  
-- normalizacija numeričkih značajki  
-- podjela na trening i test skup (70/30)  
+- uklanjanje zapisa s nedostajućim i nekonzistentnim vrijednostima  
+- odabir relevantnih značajki za treniranje modela  
+- encoding kategoričkih varijabli (brand, tip goriva, vrsta mjenjača)  
+- normalizacija numeričkih značajki (godina proizvodnje, kilometraža, snaga motora)  
+- podjela podatkovnog skupa na trening i test skup (80/20)  
 
 ---
 
@@ -59,7 +60,9 @@ Testirani su sljedeći regresijski modeli:
 
 - Linear Regression  
 - Decision Forest Regression  
-- Neural Network Regression  
+- Neural Network Regression
+- Random Forest Regression  
+- Gradient Boosting Regression    
 
 Evaluacija je provedena pomoću:
 
